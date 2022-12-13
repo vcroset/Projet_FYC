@@ -1,0 +1,154 @@
+openapi: 3.0.3
+
+info:
+  title: WS Projet FYC
+  description: WebService TD
+  version: 1.0.0
+
+servers:
+  - url: /v1
+
+paths:
+  /ip:
+    get:
+      description: api test for proxy count
+      responses:
+        '200':
+          description: OK
+
+  /users:
+    get: 
+      description:  get list of users
+      responses:
+        '200':
+          description: return list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/user'
+
+  /users/{id}:
+    get:
+      description: get user
+      parameters:
+        - name: id
+          in: path
+          description: user id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: return user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+  /customers:
+    get:
+      description: get list of customers
+      responses:
+        '200':
+          description: return list of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/customer'
+
+  /customers/{id}:
+    get:
+      description: get customer
+      parameters:
+        - name: id
+          in: path
+          description: customer id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: return customer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customer'
+
+  /customers/{id}/contracts:
+    get:
+      description: get list of contracts per customer
+      parameters:
+        - name: id
+          in: path
+          description: customer id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: return list of contracts per customer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/contract'
+
+  /customers/{id}/contracts/{subId}/materials:
+    get:
+      description: get list of materials per contract
+      parameters:
+        - name: id
+          in: path
+          description: customer id
+          required: true
+          schema:
+            type: integer
+        - name: subId
+          in: path
+          description: contract id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: return list of materials per contract
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/material'
+
+components:
+  schemas:
+    user:
+      properties:
+        id: 
+          type: number
+        name:
+          type: string
+        surname:
+          type: string
+    customer:
+      properties:
+        id: 
+          type: number
+        name: 
+          type: string
+    contract:
+      properties:
+        id: 
+          type: number
+        name: 
+          type: string
+    material:
+      properties:
+        id:
+          type: number
+        name:
+          type: string

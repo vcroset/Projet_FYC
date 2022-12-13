@@ -1,0 +1,32 @@
+
+Utilisateurs : 
+    - Liste 
+    - Modification : Admin, SI
+
+Clients :
+    - Ajout, Archive, Modification 
+    - Liste des clients 
+
+Materiels : 
+    - Liste des materiels 
+    - Contrat 
+    - Ajout, Archive, Modification 
+
+Contrats : 
+    - Liste, ajout, modification
+    - Client 
+
+Notes : 
+    - Contrat, materiel, client
+
+Renouvellements : 
+    - materiel 
+    - suivi ID
+    - fournisseur (laspote, DPD, ...)
+    - Date de depart 
+    - Date de reception
+
+
+Client -> contrat -> materiels 
+
+Client a -> 2 contrats (date, montant, renouvellement) -> 10 pc dell par contrat (dernier renouvellement)

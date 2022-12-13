@@ -1,3 +1,5 @@
+var openApiValidator = require('express-openapi-validator')
+
 const PARAM_NAME_CHARS = '[a-zA-Z0-9/_]'
 const DEFAULT_PARAM_VALUE = { nbMin: 1, nbMax: 1, regex: /.+/, symbols: [] }
 
@@ -248,7 +250,7 @@ function errorHandler(err, req, res, next) {
         res.sendUnauthorized(err.message)
     } else if (err instanceof Forbidden) {
         res.sendForbidden(err.message)
-    } else if (Object.values(OpenApiValidator.error).some(e => err?.constructor?.name == e.name)) {
+    } else if (Object.values(openApiValidator.error).some(e => err?.constructor?.name == e.name)) {
         res.status(err.status || 500).json({
             errorCode: ERROR_CODES[err.status || 500] || err.status,
             message: err.status == 400 ? err.errors : err.message

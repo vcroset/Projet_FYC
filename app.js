@@ -33,9 +33,9 @@ app.use(openApiValidator.middleware({
 // Routes
 
 // app.set('trust proxy', NB_OF_PROXY) if you use proxy or load balancer 
-if (process.env.DEV) {
-    app.get('/ip', (request, response) => response.send(request.ip))
-}
+//if (process.env.DEV) {
+app.get('/ip', (req, res) => res.send(req.ip))
+//}
 
 // Main error handler
 app.use(wsUtils.errorHandler)
